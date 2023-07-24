@@ -1,0 +1,9 @@
+EnableDefaultLinters: true
+exclude:
+  - '**/global-lib/**/*'
+linters:
+  ErbSafety:
+    enabled: true
+    exclude:
+      - '**/local-lib/**/*'
+    
