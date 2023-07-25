@@ -34,12 +34,21 @@
         </li>
       </ul>
       <div class="user_option">
-        <a href="">
-          <i class="fa fa-user" aria-hidden="true"></i>
-          <span>
-            Login
-          </span>
-        </a>
+        <% if customer_signed_in? %>
+          <%= button_to  destroy_customer_session_path, method: :delete do %>
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span>
+              Log out
+            </span>
+          <% end %>
+        <% else %>
+          <%= link_to new_customer_session_path do %>
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span>
+              Login
+            </span>
+          <% end %>
+        <% end %>
         <a href="">
           <i class="fa fa-shopping-bag" aria-hidden="true"></i>
         </a>
