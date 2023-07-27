@@ -16,3 +16,10 @@ Product.first_or_create(
     { title: 'Product 4', description: 'Product 4 Description', price: 40, currency: '$' }
   ]
 )
+
+Product.all.each do |product|
+  product.images.attach(
+    io: File.open(File.join(Rails.root, 'app/assets/images/pic01.jpg')),
+    filename: 'pic01.jpg'
+  )
+end
