@@ -12,6 +12,8 @@
 
   <body>
     <%= render 'shared/navbar' %>
+    <%= render partial: 'carts/cart' if @render_cart %>
+
     <%= yield %>
   </body>
 </html>
