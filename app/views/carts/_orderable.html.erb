@@ -14,7 +14,7 @@
     <% @cart.orderables.each do |orderable| %>
       <% product = orderable.product %>
       <tr>
-         <div id=<%= "cart-#{product.id}" %>>
+         <div id="cart-#<%= product.id %>">
 
           <th scope="row resize">
             <% if product.images.attached? %>
