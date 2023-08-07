@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # mount Sidekiq::Web => '/sidekiq'
-  
+
   authenticate :admin_user do
-    mount Sidekiq::Web, at: "/sidekiq"
+    mount Sidekiq::Web, at: '/sidekiq'
   end
-  
+
   devise_for :customers, controllers: {
     registrations: 'customers/registrations'
   }
