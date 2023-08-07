@@ -7,4 +7,8 @@ class Orderable < ApplicationRecord
   def total
     product.price * quantity
   end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[cart_id created_at id product_id quantity updated_at]
+  end
 end
