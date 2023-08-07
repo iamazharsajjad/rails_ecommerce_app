@@ -15,4 +15,20 @@ ActiveAdmin.register Product do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+  permit_params :title, :description, :stripe_id, :price, :sale_price, :currency, images: []
+
+  form html: { multipart: true } do |f|
+    f.inputs 'Publication' do
+      f.input :title
+      f.input :description
+      f.input :stripe_id
+      f.input :price
+      f.input :sale_price
+      f.input :currency
+      f.input :images, as: :file, input_html: { multiple: true }
+    end
+
+    f.actions
+  end
 end
