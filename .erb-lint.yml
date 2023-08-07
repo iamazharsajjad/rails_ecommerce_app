@@ -6,4 +6,5 @@ linters:
     enabled: true
     exclude:
       - '**/local-lib/**/*'
+      - 'app/views/kaminari/**'
     

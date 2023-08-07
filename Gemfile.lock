@@ -361,6 +361,7 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder
   jsbundling-rails
+  kaminari
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.6)

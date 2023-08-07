@@ -8,22 +8,28 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Product.first_or_create(
-  [
-    { title: 'Product 1', description: 'Product 1 Description', price: 10, currency: '$' },
-    { title: 'Product 2', description: 'Product 2 Description', price: 20, currency: '$' },
-    { title: 'Product 3', description: 'Product 3 Description', price: 30, currency: '$' },
-    { title: 'Product 4', description: 'Product 4 Description', price: 40, currency: '$' }
-  ]
-)
+# Product.first_or_create(
+#   [
+#     (1..50).each do |i|
+#       { title: "Product #{i}", description: "Product #{i} Description", price:  Random.rand(30..60), currency: '$' }
+#     end
+#   ]
+# )
 
-Product.all.each do |product|
-  product.images.attach(
-    io: File.open(File.join(Rails.root, 'app/assets/images/pic01.jpg')),
-    filename: 'pic01.jpg'
-  )
-end
 if Rails.env.development?
   AdminUser.create!(email: 'admin@example.com', password: 'password',
                     password_confirmation: 'password')
+
+  (1..50).each do |i|
+    Product.create!(
+      { title: "Product #{i}", description: "Product #{i} Description", price: Random.rand(30..60), currency: '$' }
+    )
+  end
+
+  Product.all.each do |product|
+    product.images.attach(
+      io: File.open(File.join(Rails.root, 'app/assets/images/pic01.jpg')),
+      filename: 'pic01.jpg'
+    )
+  end
 end
