@@ -57,6 +57,7 @@ gem 'devise'
 gem 'font-awesome-rails'
 
 gem 'activeadmin'
+gem 'kaminari'
 gem 'sass-rails', '>= 5'
 
 group :development, :test do

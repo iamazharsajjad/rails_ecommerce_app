@@ -1,3 +1,4 @@
+
 <section class="shop_section layout_padding">
   <%= button_to "hello", hello_path, remote: :true %>
   <%= link_to "Monitor Jobs", sidekiq_web_path %>
@@ -10,36 +11,36 @@
     <div class="row">
       <% @products&.each do |product| %>
         <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  <%= product.title %>
-                </h6>
-                <h6>
-                  Price
+          <%= link_to product_path(product) do %>
+            <div class="box">
+              <a href="">
+                <div class="img-box">
+                            <%= image_tag product.images.first %>
+                </div>
+                <div class="detail-box">
+                  <h6>
+                    <%= product.title %>
+                  </h6>
+                  <h6>
+                    Price
+                    <span>
+                      <%= product.currency %><%= product.price %>
+                    </span>
+                  </h6>
+                </div>
+                <div class="new">
                   <span>
-                    <%= product.currency %><%= product.price %>
+                    New
                   </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
+                </div>
+              </a>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
-    <div class="btn-box">
-      <a href="">
-        View All Products
-      </a>
+    <div class="ymt-5">
+      <%= paginate @products, class: "" %>
     </div>
   </div>
 </section>
