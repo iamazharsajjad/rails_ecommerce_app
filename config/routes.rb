@@ -2,23 +2,15 @@
 
 require 'sidekiq/web'
 
-class WhiteListedIps
-  def self.matches?(request)
-    @ips = WhiteListedIp.pluck(:source_ip)
-    @ips.include?(request.remote_ip)
-  end
-end
-
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
-  constraints(WhiteListedIps) do
-    ActiveAdmin.routes(self)
-    # mount Sidekiq::Web => '/sidekiq'
+  ActiveAdmin.routes(self)
+  # mount Sidekiq::Web => '/sidekiq'
 
-    authenticate :admin_user do
-      mount Sidekiq::Web, at: '/sidekiq'
-    end
+  authenticate :admin_user do
+    mount Sidekiq::Web, at: '/sidekiq'
   end
+
   devise_for :customers, controllers: {
     registrations: 'customers/registrations'
   }
