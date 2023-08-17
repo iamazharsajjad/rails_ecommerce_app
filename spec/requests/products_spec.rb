@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Products', type: :request do
   describe 'GET index' do
     it 'assigns @products' do
-      product = Product.create({ title: 'Product 1', description: 'Product 1 Description', price: 10, currency: '$' })
+      product = FactoryBot.create(:product)
       product.images.attach(
         io: File.open(File.join(Rails.root, 'app/assets/images/pic01.jpg')),
         filename: 'pic01.jpg'
@@ -19,11 +19,12 @@ RSpec.describe 'Products', type: :request do
 
   describe 'GET show' do
     it 'assigns @products' do
-      product = Product.create({ title: 'Product 1', description: 'Product 1 Description', price: 10, currency: '$' })
+      product = FactoryBot.create(:product)
       get product_path(product.id)
       # expect(assigns(:products)).to eq([product])
       expect(response).to have_http_status(200)
-      # expect(response.body).to include(brand.name)
+      # expect(response).should redirect_to(product)
+      # expect(response).to render_template("index")
     end
   end
 end

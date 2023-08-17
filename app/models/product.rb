@@ -1,5 +1,19 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: products
+#
+#  id          :bigint           not null, primary key
+#  currency    :string
+#  description :string
+#  price       :integer
+#  sale_price  :integer
+#  title       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  stripe_id   :string
+#
 class Product < ApplicationRecord
   has_many_attached :images
 
