@@ -77,6 +77,9 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     arbre (1.6.0)
       activesupport (>= 3.0.0, < 7.1)
       ruby2_keywords (>= 0.0.2, < 1.0)
@@ -126,6 +129,11 @@ GEM
       rubocop
       smart_properties
     erubi (1.12.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.15.5)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
@@ -352,12 +360,14 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  annotate
   bootsnap
   capybara
   cssbundling-rails
   debug
   devise
   erb_lint
+  factory_bot_rails
   font-awesome-rails
   jbuilder
   jsbundling-rails

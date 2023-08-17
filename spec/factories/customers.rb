@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: admin_users
+# Table name: customers
 #
 #  id                     :bigint           not null, primary key
 #  email                  :string           default(""), not null
@@ -15,11 +15,11 @@
 #
 # Indexes
 #
-#  index_admin_users_on_email                 (email) UNIQUE
-#  index_admin_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_customers_on_email                 (email) UNIQUE
+#  index_customers_on_reset_password_token  (reset_password_token) UNIQUE
 #
-require 'rails_helper'
-
-RSpec.describe AdminUser, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+FactoryBot.define do
+  factory :customer do
+    sequence(:email) { |n| "a#{n}@a.com" }
+  end
 end
